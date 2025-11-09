@@ -65,6 +65,10 @@
   "brightscope_difference_paragraph": "At Bright Scope, we go beyond cleaning — we bring clarity, comfort, and care into every home and office.",
   "company_name": "Bright Scope UAE",
 
+  "why_choose_us_title_prefix": "Why",
+  "why_choose_us_title_highlight": "Choose Us?",
+  "why_choose_us_subtitle": "Discover what makes us the trusted choice for thousands of customers across Dubai and beyond",
+
   "footer_tagline": "Your trusted cleaning and pest control partner in Dubai. 15+ years of excellence from Egypt to the UAE, serving thousands of satisfied customers.",
   "call_now": "Call Now",
   "whatsapp_us": "WhatsApp Us",
@@ -168,6 +172,14 @@
       "email_support": "Email Support",
       "twentyfour_support": "24/7 Support",
       "email_description": "Send us your queries and we’ll respond promptly"
+    },
+    "map_card": {
+      "title": "Visit Our Office",
+      "subtitle": "Come visit us at our Dubai headquarters for in-person consultations.",
+      "address_line1": "Business Bay, Dubai",
+      "address_line2": "United Arab Emirates",
+      "working_hours_label": "Working Hours",
+      "working_hours_value": "Mon–Fri: 8AM–8PM | Sat: 9AM–6PM"
     },
     "quick": {
       "titlePrefix": "Quick",

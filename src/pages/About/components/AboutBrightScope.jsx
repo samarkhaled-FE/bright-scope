@@ -1,26 +1,36 @@
 import { useTranslation } from "react-i18next";
+import CountUp from "../../../components/CountUp";
 
 const AboutBrightScope = () => {
   const { t } = useTranslation();
+  // Use numeric values and suffixes so we can animate them with a CountUp component
   const aboutBrightItems = [
     {
       iconClass: "icon-[mdi--calendar]",
-      title: "15+",
+      value: 15,
+      suffix: "+",
+      formatThousands: false,
       subtitle: "Years Experience",
     },
     {
       iconClass: "icon-[mdi--emoticon-happy-outline]",
-      title: "10,000+",
+      value: 10000,
+      suffix: "+",
+      formatThousands: true,
       subtitle: "Happy Customers",
     },
     {
       iconClass: "icon-[mdi--earth]",
-      title: "50+",
+      value: 50,
+      suffix: "+",
+      formatThousands: false,
       subtitle: "Cities Served",
     },
     {
       iconClass: "icon-[mdi--sparkles]",
-      title: "99%",
+      value: 99,
+      suffix: "%",
+      formatThousands: false,
       subtitle: "Satisfaction Rate",
     },
   ];
@@ -41,7 +51,10 @@ const AboutBrightScope = () => {
                 <span className={`${item.iconClass} text-40px`}></span>
               </div>
 
-              <p className="font-semibold text-36px mb-1">{item.title}</p>
+              {/* animated numeric value */}
+              <p className="font-semibold text-36px mb-1">
+                <CountUp end={item.value} suffix={item.suffix} formatThousands={item.formatThousands} />
+              </p>
               <p className="font-semibold text-22px text-secondary-dark">
                 {t(`about_page.stats.${index}`)}
               </p>

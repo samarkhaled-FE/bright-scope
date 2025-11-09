@@ -6,7 +6,14 @@ import { Icon } from "@iconify/react";
 
 const Services = () => {
   const { services, loading } = useServices();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const getLocalized = (obj, field) => {
+    if (!obj) return "";
+    // try field with language suffix, e.g. name_ar
+    const langField = `${field}_${i18n.language}`;
+    return obj[langField] ?? obj[field] ?? "";
+  };
   const [activeTab, setActiveTab] = useState(null);
   const { category } = useParams();
   const location = useLocation();
@@ -101,7 +108,7 @@ const Services = () => {
                         : "text-gray-500 group-hover:text-primary"
                     }`}
                   />
-                  <span className="truncate">{svc.name}</span>
+                  <span className="truncate">{getLocalized(svc, "name")}</span>
                 </button>
               );
             })}
@@ -128,10 +135,10 @@ const Services = () => {
 
                       <div>
                         <h6 className="font-semibold text-22px mb-1">
-                          {service.name}
+                          {getLocalized(service, "name")}
                         </h6>
                         <p className="font-normal text-14px">
-                          {service.description}
+                          {getLocalized(service, "description")}
                         </p>
                       </div>
                     </div>
@@ -153,7 +160,7 @@ const Services = () => {
                               className="text-primary size-6"
                             />
                             <p className="text-base text-secondary-dark">
-                              {content.name}
+                              {getLocalized(content, "name")}
                             </p>
                           </div>
                         ))
@@ -180,10 +187,10 @@ const Services = () => {
                               />
                             </div>
                             <p className="font-semibold text-18px text-center">
-                              {feat.name}
+                              {getLocalized(feat, "name")}
                             </p>
                             <p className="font-normal text-14px text-center text-secondary-dark">
-                              {feat.description}
+                              {getLocalized(feat, "description")}
                             </p>
                           </div>
                         ))

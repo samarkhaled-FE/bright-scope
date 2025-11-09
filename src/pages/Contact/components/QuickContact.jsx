@@ -1,6 +1,7 @@
 import { useForm, Controller } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import "./phone-input-rtl.css";
 import { notyf } from "../../../utils/toast";
 import apiHelper from "../../../api/apiHelper";
 import { useTranslation } from "react-i18next";
@@ -57,7 +58,7 @@ const QuickContact = () => {
     }
   };
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <section className="my-7 md:my-14">
@@ -123,7 +124,8 @@ const QuickContact = () => {
                         {...field}
                         country="ae"
                         enableSearch
-                        inputProps={{ readOnly: !!user }}
+                        containerClass={i18n.language === "ar" ? "phone-input phone-rtl" : "phone-input"}
+                        inputProps={{ readOnly: !!user, dir: i18n.language === "ar" ? "rtl" : "ltr" }}
                         inputClass="!w-full !h-10"
                         placeholder={t("contact_page.quick.placeholder_phone")}
                         onChange={(value) => field.onChange("+" + value)}
@@ -259,11 +261,10 @@ const QuickContact = () => {
               </div>
               <div>
                 <h2 className="font-semibold text-28px mb-2">
-                  Visit Our Office
+                  {t("contact_page.map_card.title")}
                 </h2>
                 <p className="font-normal text-base text-secondary-dark">
-                  Come visit us at our Dubai headquarters for in-person
-                  consultations.
+                  {t("contact_page.map_card.subtitle")}
                 </p>
               </div>
             </div>
@@ -272,10 +273,10 @@ const QuickContact = () => {
               <span className="icon-[mdi--location] text-25px text-primary"></span>
               <div>
                 <p className="font-semibold text-base mb-1">
-                  Business Bay, Dubai
+                  {t("contact_page.map_card.address_line1")}
                 </p>
                 <p className="font-semibold text-12px text-muted-dark">
-                  United Arab Emirates
+                  {t("contact_page.map_card.address_line2")}
                 </p>
               </div>
             </div>
@@ -283,9 +284,9 @@ const QuickContact = () => {
             <div className="flex gap-4 mb-4">
               <span className="icon-[mingcute--time-line] text-25px text-primary"></span>
               <div>
-                <p className="font-semibold text-base mb-1">Working Hours</p>
+                <p className="font-semibold text-base mb-1">{t("contact_page.map_card.working_hours_label")}</p>
                 <p className="font-semibold text-12px text-muted-dark">
-                  Mon–Fri: 8AM–8PM | Sat: 9AM–6PM
+                  {t("contact_page.map_card.working_hours_value")}
                 </p>
               </div>
             </div>

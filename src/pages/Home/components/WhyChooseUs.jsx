@@ -43,11 +43,10 @@ const WhyChooseUs = () => {
   return (
     <section className="my-28 text-center relative">
       <h2 className="font-semibold text-36px mb-2 text-primary-dark">
-      Why   <span className="text-primary"> Choose Us ?</span>
+        {t("why_choose_us_title_prefix")} <span className="text-primary">{t("why_choose_us_title_highlight")}</span>
       </h2>
       <p className="text-primary-dark font-medium text-18px mb-4">
-        Discover what makes us the trusted choice for thousands of customers
-        across Dubai and beyond
+        {t("why_choose_us_subtitle")}
       </p>
       <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8">
         {Array.isArray(features) && features.map((item, index) => (
@@ -55,7 +54,7 @@ const WhyChooseUs = () => {
             key={index}
             className="bg-surface-light rounded-20px shadow-2xl p-4 max-w-[75%] m-auto hover:scale-105 transition-transform duration-300"
           >
-            <div className="size-14 bg-primary rounded-full center_flex mb-2 m-auto mb-1">
+            <div className="size-14 bg-primary rounded-full center_flex mb-2 m-auto">
               <span className={`${item.icon} size-8 text-white`}></span>
               {/* <span className='icon-[mdi--shield-check] size-10 text-white'></span> */}
             </div>

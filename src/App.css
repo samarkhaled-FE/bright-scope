@@ -219,3 +219,37 @@ body {
 .animate-slideDown {
   animation: slideDown 0.3s ease-in-out;
 }
+
+/* RTL fixes for react-phone-input-2 */
+.phone-input .flag-dropdown {
+  left: 8px; /* default LTR placement */
+  right: auto;
+}
+
+.phone-input.phone-rtl .flag-dropdown {
+  left: auto;
+  right: 8px; /* move flag/dropdown to the right for RTL */
+}
+
+/* adjust input padding so the flag doesn't overlap the text */
+.phone-input .form-control {
+  padding-left: 56px; /* leave space for flag in LTR */
+}
+
+.phone-input.phone-rtl .form-control {
+  padding-left: 12px; /* small left padding in RTL */
+  padding-right: 56px; /* leave space on the right for the flag */
+  direction: rtl;
+  text-align: right;
+}
+
+/* optional: ensure the dropdown caret aligns visually */
+.phone-input .flag-dropdown .selected-flag::after {
+  right: 10px;
+  left: auto;
+}
+
+.phone-input.phone-rtl .flag-dropdown .selected-flag::after {
+  left: 10px;
+  right: auto;
+}

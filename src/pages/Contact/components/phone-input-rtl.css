@@ -1,0 +1,254 @@
+/* ===================================================
+   Phone Input RTL & Arrow Inside Flag Button
+   =================================================== */
+
+/* ===== Base Container ===== */
+.phone-input .react-tel-input {
+  position: relative;
+  width: 100%;
+}
+
+/* ===== Flag Dropdown Button (Contains Flag + Arrow) ===== */
+.phone-input .react-tel-input .flag-dropdown {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; /* space between flag and arrows */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  width: 76px; /* increased width for flag + two arrows */
+  background: transparent;
+  border-radius: 8px 0 0 8px;
+  border-right: 1px solid #CBD5E1;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: 0 8px;
+}
+
+.phone-input .react-tel-input .flag-dropdown:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* ===== RTL: Move flag button to right ===== */
+.phone-input.phone-rtl .react-tel-input .flag-dropdown {
+  left: auto;
+  right: 0;
+  border-radius: 0 8px 8px 0;
+  border-right: none;
+  border-left: 1px solid #CBD5E1;
+}
+
+/* ===== Selected Flag Container (Flag + Arrow) ===== */
+.phone-input .react-tel-input .selected-flag {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0; /* spacing controlled via margins on arrows */
+  width: 100%;
+  height: 100%;
+  padding: 0; /* remove padding so flag+arrow center nicely */
+}
+
+/* ===== RTL: Reverse order of flag and arrow ===== */
+.phone-input.phone-rtl .react-tel-input .selected-flag {
+  flex-direction: row-reverse;
+}
+
+.phone-input.phone-rtl .react-tel-input .selected-flag .arrow {
+  margin-left: 0;
+  margin-right: 4px; /* triangle spacing before flag in RTL */
+}
+
+.phone-input.phone-rtl .react-tel-input .selected-flag::after {
+  margin-left: 0;
+  margin-right: 4px; /* triangle spacing before flag in RTL */
+}
+
+/* Add a small caret to the fallback - uses ::before */
+.phone-input .react-tel-input .selected-flag::before {
+  content: "▾";
+  display: inline-block;
+  font-size: 10px;
+  color: #555;
+  line-height: 1;
+  margin-left: 2px; /* caret spacing after triangle in LTR */
+}
+.phone-input.phone-rtl .react-tel-input .selected-flag::before {
+  margin-left: 0;
+  margin-right: 2px; /* caret spacing before triangle in RTL */
+}
+
+/* ===== Flag Icon ===== */
+.phone-input .react-tel-input .flag {
+  display: inline-block !important;
+  width: 20px;
+  height: 15px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0; /* prevent flag from shrinking */
+}
+
+/* ===== Arrow/Caret Icon (inside button, next to flag) ===== */
+.phone-input .react-tel-input .selected-flag .arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #555;
+  position: static; /* not absolute, flows inline with flag */
+  transform: none;
+  pointer-events: none;
+  margin: 0; /* base reset - specific gaps handled below */
+  margin-left: 4px; /* triangle spacing after flag in LTR */
+}
+
+/* ===== Fallback: Create arrow using ::after if library doesn't render .arrow ===== */
+.phone-input .react-tel-input .selected-flag::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #555;
+  flex-shrink: 0;
+  margin-left: 4px; /* triangle spacing after flag in LTR */
+}
+
+/* Hide the ::after arrow if real .arrow element exists */
+.phone-input .react-tel-input .selected-flag:has(.arrow)::after {
+  display: none;
+}
+
+/* ===== Input Field ===== */
+.phone-input .react-tel-input .form-control {
+  padding-left: 86px; /* space for flag button (76px) + margin */
+  padding-right: 12px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 14px;
+  direction: ltr;
+  text-align: left;
+}
+
+/* ===== RTL Input ===== */
+.phone-input.phone-rtl .react-tel-input {
+  direction: rtl;
+}
+
+phone-input.phone-rtl .react-tel-input .form-control {
+  padding-left: 12px;
+  padding-right: 86px; /* space for flag button on right */
+  direction: rtl;
+  text-align: right;
+}
+
+/* ===== Dropdown Country List ===== */
+.phone-input .react-tel-input .country-list {
+  text-align: left;
+  direction: ltr;
+  max-height: 250px;
+  overflow-y: auto;
+  left: 0;
+  right: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.phone-input.phone-rtl .react-tel-input .country-list {
+  text-align: right;
+  direction: rtl;
+  left: auto;
+  right: 0;
+}
+
+/* ===== Country Item in Dropdown ===== */
+.phone-input .react-tel-input .country-list .country {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.phone-input.phone-rtl .react-tel-input .country-list .country {
+  flex-direction: row-reverse;
+}
+
+.phone-input .react-tel-input .country-list .country:hover {
+  background-color: #f3f4f6;
+}
+
+.phone-input .react-tel-input .country-list .country.highlight {
+  background-color: #e5e7eb;
+}
+
+/* Flag in dropdown */
+.phone-input .react-tel-input .country-list .flag {
+  margin-right: 8px;
+  margin-left: 0;
+}
+
+.phone-input.phone-rtl .react-tel-input .country-list .flag {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+/* ===== Search Box in Dropdown ===== */
+.phone-input .react-tel-input .search-box {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e5e7eb;
+  direction: ltr;
+  text-align: left;
+}
+
+.phone-input.phone-rtl .react-tel-input .search-box {
+  direction: rtl;
+  text-align: right;
+}
+
+.phone-input .react-tel-input .search-box input {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* ===== Focus States ===== */
+.phone-input .react-tel-input .form-control:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ===== Disabled/ReadOnly State ===== */
+.phone-input .react-tel-input .form-control:disabled,
+.phone-input .react-tel-input .form-control:read-only {
+  background-color: #f9fafb;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.phone-input .react-tel-input .flag-dropdown.disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .phone-input .react-tel-input .form-control {
+    font-size: 16px; /* prevent iOS zoom */
+  }
+}
