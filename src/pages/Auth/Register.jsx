@@ -316,7 +316,7 @@ export default function Register() {
                       ) : (
                         <>
                           {t("auth.register.sign_up_button")}
-                          <span className="icon-[mdi--arrow-right]"></span>
+                          <span className="icon-[mdi--arrow-right] rtl-flip"></span>
                         </>
                       )}
                     </button>

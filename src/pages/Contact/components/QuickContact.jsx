@@ -235,16 +235,16 @@ const QuickContact = () => {
                 disabled={isSubmitting}
                 className="btn btn-primary h-14 rounded-55px font-semibold text-base w-full"
               >
-                {isSubmitting ? (
+                    {isSubmitting ? (
                   <>
                     {t("contact_page.quick.sending")}
                     <span className="loading loading-spinner loading-sm ms-2"></span>
                   </>
                 ) : (
                   <>
-                    <span className="icon-[tabler--send] me-2"></span>
-                    {t("contact_page.quick.send_message")}
-                    <span className="icon-[tabler--arrow-right] ms-2"></span>
+                        <span className="icon-[tabler--send] me-2"></span>
+                        {t("contact_page.quick.send_message")}
+                        <span className="icon-[tabler--arrow-right] ms-2 rtl-flip"></span>
                   </>
                 )}
               </button>

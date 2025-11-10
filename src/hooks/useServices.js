@@ -2,18 +2,21 @@ import { useState, useEffect } from "react";
 import apiHelper from "../api/apiHelper";
 import { notyf } from "../utils/toast";
 import { useAuth } from "../context/AuthContext"; // ✅ أضف ده
+import { useTranslation } from "react-i18next";
 
 export const useServices = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { loading: authLoading } = useAuth(); // ✅ نستخدم حالة الـAuth
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     const fetchServices = async () => {
       try {
         const response = await apiHelper.get("services/services/", {
           publicRequest: true,
+          params: { language: i18n.language },
         });
 
         setServices(response.data);
@@ -35,7 +38,7 @@ export const useServices = () => {
     if (!authLoading) {
       fetchServices();
     }
-  }, [authLoading]);
+  }, [authLoading, i18n.language]);
 
   return { services, loading, error };
 };

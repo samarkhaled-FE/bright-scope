@@ -1,0 +1,43 @@
+/* src/styles/fonts.css
+   Load IBM Plex Sans Arabic for RTL (Arabic) UI.
+
+   Two options are provided:
+   1) Use the Google Fonts import (fast to get started).
+   2) If you prefer self-hosting, download the WOFF2 files into public/fonts
+      and uncomment the @font-face blocks below (and update file names).
+*/
+
+/* Recommended: import from Google Fonts (fallback to local if available) */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&display=swap');
+
+/* Example local @font-face (commented). If you add files to public/fonts,
+   uncomment and update the paths for best performance (use .woff2).
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/IBM-Plex-Sans-Arabic-Regular.woff2') format('woff2'),
+       url('/fonts/IBM-Plex-Sans-Arabic-Regular.woff') format('woff'),
+       url('/fonts/IBM-Plex-Sans-Arabic-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/IBM-Plex-Sans-Arabic-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* Apply IBM Plex Sans Arabic automatically when document direction is RTL */
+html[dir="rtl"] {
+  font-family: 'IBM Plex Sans Arabic', Arial, sans-serif;
+  direction: rtl;
+}
+
+/* Optional utility class you can use in components */
+.font-ibmplex {
+  font-family: 'IBM Plex Sans Arabic', Arial, sans-serif;
+}
+

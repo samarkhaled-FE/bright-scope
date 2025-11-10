@@ -18,7 +18,7 @@ const ServiceDetails = () => {
   const navigate = useNavigate();
   const [serviceDetails, setServiceDetails] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [selectedAddons, setSelectedAddons] = useState([]);
@@ -34,6 +34,7 @@ const ServiceDetails = () => {
       try {
         const response = await apiHelper.get(`services/services/${id}`, {
           publicRequest: true,
+          params: { language: i18n.language },
         });
         const data = response.data;
 
@@ -47,7 +48,7 @@ const ServiceDetails = () => {
     };
 
     fetchServiceDetails();
-  }, [id]);
+  }, [id, i18n.language]);
   // Update total whenever selections change
 
   useEffect(() => {

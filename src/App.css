@@ -253,3 +253,12 @@ body {
   left: 10px;
   right: auto;
 }
+
+/* Utility to flip directional icons when the document is in RTL mode.
+   Use by adding the `rtl-flip` class to arrow icons that should mirror
+   on Arabic/RTL layouts. We use scaleX to mirror horizontally which
+   works well for left/right arrows and chevrons. */
+html[dir="rtl"] .rtl-flip {
+  display: inline-block; /* ensure transform applies predictably */
+  transform: scaleX(-1);
+}

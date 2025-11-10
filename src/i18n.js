@@ -20,6 +20,8 @@ i18n.use(initReactI18next).init({
 // Set document direction according to initial language
 if (typeof document !== "undefined") {
   document.documentElement.dir = i18n.language === "ar" ? "rtl" : "ltr";
+  // also set lang attribute so CSS selectors like html[lang] work if used elsewhere
+  document.documentElement.lang = i18n.language || 'en';
 }
 
 // Persist language choice and update dir on language change
@@ -31,6 +33,7 @@ i18n.on("languageChanged", (lng) => {
   }
   if (typeof document !== "undefined") {
     document.documentElement.dir = lng === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = lng || 'en';
   }
 });
 

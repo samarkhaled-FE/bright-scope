@@ -110,7 +110,7 @@ const Modal = forwardRef(
                   ref?.current?.close?.();
                 }}
               >
-             CONTINUE TO CHECKOUT <span className="icon-[mdi--arrow-right] ml-2"></span>
+             CONTINUE TO CHECKOUT <span className="icon-[mdi--arrow-right] ml-2 rtl-flip"></span>
               </button>
             </div>
           </div>

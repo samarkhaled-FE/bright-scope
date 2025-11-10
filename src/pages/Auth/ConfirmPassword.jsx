@@ -172,7 +172,7 @@ const ConfirmPassword = () => {
 
                       <button class="btn btn-lg btn-primary btn-gradient h-14 rounded-55px btn-block uppercase mt-4">
                         Update password
-                        <span className="icon-[mdi--arrow-right]"></span>
+                        <span className="icon-[mdi--arrow-right] rtl-flip"></span>
                       </button>
                     </form>
                     <div class="font-normal text-base mt-8 mb-4 text-center center_flex ">

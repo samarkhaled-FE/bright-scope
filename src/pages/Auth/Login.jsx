@@ -245,7 +245,7 @@ export default function Login() {
                       ) : (
                         <>
                           {t("auth.login_button")}
-                          <span className="icon-[mdi--arrow-right]"></span>
+                          <span className="icon-[mdi--arrow-right] rtl-flip"></span>
                         </>
                       )}
                     </button>

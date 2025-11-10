@@ -207,7 +207,7 @@ const Services = () => {
                       className="btn btn-primary w-full h-14 rounded-55px font-semibold text-base mt-8"
                     >
                       {t("book_now")}
-                      <Icon icon="mdi:arrow-right" className="ml-2" />
+                      <Icon icon="mdi:arrow-right" className="ml-2 rtl-flip" />
                     </Link>
                   </div>
                 )

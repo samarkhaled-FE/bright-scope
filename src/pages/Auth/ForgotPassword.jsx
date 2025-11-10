@@ -146,7 +146,7 @@ const ForgotPassword = () => {
                       ) : (
                         <>
                           {t("auth.forgot.send_reset_code")}
-                          <span className="icon-[mdi--arrow-right]"></span>
+                          <span className="icon-[mdi--arrow-right] rtl-flip"></span>
                         </>
                       )}
                     </button>

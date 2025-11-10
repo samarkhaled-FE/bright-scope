@@ -1,10 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 const { VITE_IMG_BASE_URL } = import.meta.env;
 
 const ServiceFeature = ({ serviceDetails }) => {
   const navigate = useNavigate();
 
   console.log(serviceDetails, "zz");
+
+  const { i18n, t } = useTranslation();
+
+  const getLocalized = (obj, field) => {
+    if (!obj) return "";
+    const langField = `${field}_${i18n.language}`;
+    return obj[langField] ?? obj[field] ?? "";
+  };
 
   return (
     <section className="my-3 md:my-6 border-b border-[#E0E0E0] pb-4 md:pb-8">
@@ -14,17 +23,17 @@ const ServiceFeature = ({ serviceDetails }) => {
             onClick={() => navigate(-1)}
             className="flex items-center gap-2.5 mb-8 text-primary "
           >
-            <span className="icon-[mdi--arrow-left]"></span>
-            <span className="font-normal text-base ">Back to Services</span>
+            <span className="icon-[mdi--arrow-left] rtl-flip"></span>
+            <span className="font-normal text-base ">{t("back_to_services", { defaultValue: "Back to Services" })}</span>
           </button>
           <h1 className="font-bold text-48px text-primary-dark mb-2">
-            {serviceDetails.hero_title}
+            {getLocalized(serviceDetails, "hero_title") || serviceDetails.hero_title}
           </h1>
           <p className="font-semibold text-22px text-primary-dark mb-2">
-            {serviceDetails.sub_hero_title}
+            {getLocalized(serviceDetails, "sub_hero_title") || serviceDetails.sub_hero_title}
           </p>
           <p className="font-normal text-base text-primary-dark mb-8">
-            {serviceDetails.hero_description}
+            {getLocalized(serviceDetails, "hero_description") || serviceDetails.hero_description}
           </p>
           <div className="flex items-center gap-6 mb-8">
             {serviceDetails.ratings
@@ -52,7 +61,7 @@ const ServiceFeature = ({ serviceDetails }) => {
                 <div key={feature.id} className="flex items-center gap-3">
                   <span className="icon-[mdi--check-circle] text-primary size-6"></span>
                   <p className="font-normal text-base text-secondary-dark">
-                    {feature.name}
+                    {getLocalized(feature, "name") || feature.name}
                   </p>
                 </div>
               ))}
@@ -71,7 +80,13 @@ rounded-61px"
                   ? `${VITE_IMG_BASE_URL}${serviceDetails.hero_image}`
                   : "/service_details_img.webp"
               }
-              alt="service"
+              alt={getLocalized(serviceDetails, "hero_title") || "service"}
+              onError={(e) => {
+                // fallback to bundled image if remote fails
+                if (e.currentTarget.src !== "/service_details_img.webp") {
+                  e.currentTarget.src = "/service_details_img.webp";
+                }
+              }}
             />
           </div>
         </div>

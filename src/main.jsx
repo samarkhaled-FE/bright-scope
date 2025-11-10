@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import "./styles/fonts.css";
 import "./index.css";
 // i18n must be imported before any component that uses translations
 import "./i18n";

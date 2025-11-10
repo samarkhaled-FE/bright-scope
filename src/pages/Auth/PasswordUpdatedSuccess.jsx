@@ -112,7 +112,7 @@ const PasswordUpdatedSuccess = () => {
                         class="btn btn-lg btn-primary btn-gradient h-14 rounded-55px btn-block uppercase "
                       >
                         Continue To Login
-                        <span className="icon-[mdi--arrow-right]"></span>
+                        <span className="icon-[mdi--arrow-right] rtl-flip"></span>
                       </Link>
                     </div>
                   </div>

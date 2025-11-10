@@ -202,7 +202,7 @@ const HeroSlider = () => {
           className="carousel-prev start-5 max-sm:start-3 carousel-disabled:opacity-50 size-9.5 flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm z-30"
           aria-label="Previous slide"
         >
-          <span className="icon-[cil--arrow-left]  size-9.5 text-white font-normal"></span>
+          <span className="icon-[cil--arrow-left]  size-9.5 text-white font-normal rtl-flip"></span>
           <span className="sr-only">{t("previous")}</span>
         </button>
 
@@ -212,7 +212,7 @@ const HeroSlider = () => {
           className="carousel-next end-5 max-sm:end-3 carousel-disabled:opacity-50 size-9.5  flex items-center justify-center rounded-full shadow-base-300/20 shadow-sm z-30"
           aria-label="Next slide"
         >
-          <span className="icon-[cil--arrow-right] size-9.5 text-white font-normal"></span>
+          <span className="icon-[cil--arrow-right] size-9.5 text-white font-normal rtl-flip"></span>
           <span className="sr-only">{t("next")}</span>
         </button>
 

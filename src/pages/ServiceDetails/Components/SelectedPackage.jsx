@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const SelectedPackage = ({
   selectedPackage,
@@ -6,21 +7,27 @@ const SelectedPackage = ({
   total,
   onBookNow,
 }) => {
+  const { i18n, t } = useTranslation();
+  const getLocalized = (obj, field) => {
+    if (!obj) return "";
+    const key = `${field}_${i18n.language}`;
+    return obj[key] ?? obj[field] ?? "";
+  };
   return (
     <section className="my-7 md:my-14 bg-[#ECF0F0] p-5 md:p-8 rounded-10px flex flex-col items-center gap-4 ">
       {/* <h6 className="font-semibold  text-22px">Selected Package</h6> */}
       {selectedPackage ? (
         <>
           <p className="text-lg">
-            Selected Package:{" "}
+            {t("selected_package_label", { defaultValue: "Selected Package:" })}{" "}
             <strong>
-              {selectedPackage.name} (AED {selectedPackage.price})
+              {getLocalized(selectedPackage, "name") || selectedPackage.name} (AED {selectedPackage.price})
             </strong>
           </p>
           {selectedAddons.length > 0 && (
             <p className="text-base mt-2">
-              Add-ons:{" "}
-              <strong> {Array.isArray(selectedAddons) && selectedAddons.map((a) => a.name).join(", ")}</strong>
+              {t("addons_label", { defaultValue: "Add-ons:" })}{" "}
+              <strong> {Array.isArray(selectedAddons) && selectedAddons.map((a) => getLocalized(a, "name") || a.name).join(", ")}</strong>
             </p>
           )}
           <p className="font-semibold text-22px text-primary-dark mt-4">
@@ -34,7 +41,7 @@ const SelectedPackage = ({
           </button>
         </>
       ) : (
-        <p className="text-red-600">Please choose a package to continue.</p>
+  <p className="text-red-600">{t("please_choose_package_continue", { defaultValue: "Please choose a package to continue." })}</p>
       )}
       {/* <p className="font-semibold text-36px text-primary">AED 120</p>
       <p className="font-normal text-12px ">Duration: 2-3 Hours</p> */}

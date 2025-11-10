@@ -95,7 +95,7 @@ const OurServices = () => {
                   className="btn btn-primary rounded-[55px] p-4 btn-block font-semibold text-base min-h-14 uppercase"
                 >
                   {t("book_now")}
-                  <span className="icon-[cil--arrow-right]  ms-3 w-6 h-11 font-bold"></span>
+                  <span className="icon-[cil--arrow-right]  ms-3 w-6 h-11 font-bold rtl-flip"></span>
                 </Link>
               </div>
             ))
